@@ -5,63 +5,46 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lời Bài Hát</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f3f4f6;
-      color: #111827;
-      padding: 2rem;
-      max-width: 800px;
-      margin: auto;
-    }
-    h1 {
-      text-align: center;
-      color: #1d4ed8;
-    }
-    select {
-      display: block;
-      margin: 1rem auto;
-      padding: 0.5rem;
-      font-size: 1rem;
-    }
-    pre {
-      white-space: pre-wrap;
-      background: #fff;
-      padding: 1rem;
-      border-radius: 0.5rem;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-  </style>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-  <h1>Lời Bài Hát</h1>
-  <select id="songSelect">
-    <option value="see-tinh">See Tình</option>
-    <option value="tung-quen">Từng Quen</option>
-    <option value="chuyen-doi-ta">Chuyện Đôi Ta</option>
-    <option value="khong-thuoc-ve-nhau">Chúng Ta Không Thuộc Về Nhau</option>
-  </select>
-  <pre id="lyrics">
-Chọn một bài hát để xem lời ngay nào...
-  </pre>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
+  <div class="w-full max-w-3xl bg-white rounded-2xl shadow-xl p-8">
+    <h1 class="text-4xl font-bold text-center text-indigo-600 mb-6">🎵 Lời Bài Hát 🎵</h1>
+    <select id="songSelect" class="w-full p-3 border border-gray-300 rounded-lg mb-6 focus:outline-none focus:ring-2 focus:ring-indigo-400">
+      <option value="">-- Chọn một bài hát --</option>
+      <option value="tung-quen">Từng Quen - Vũ Cát Tường</option>
+    </select>
+    <div id="lyrics" class="whitespace-pre-line bg-gray-50 p-6 rounded-lg border border-gray-200 text-gray-800 text-lg font-mono"></div>
+  </div>
+
   <script>
-    const lyrics = {
-      "see-tinh": `Đâu phải do duyên số đây là do anh cưỡng em thôi
-Tình đẹp thế ai mà hững, anh nhìn em là say lên ngày trôi...`,
-      "tung-quen": `Tôi từng quên, quên một người
-Từng đau đớn đau...
-Nhưng sao giờ đây, em quay về...`,
-      "chuyen-doi-ta": `Đến hôm nay, ta có còn là gì của nhau?
-Hay chỉ là những hồi ức?
-Bên nhau mà chẳng hề thấy...`,
-      "khong-thuoc-ve-nhau": `Anh không thuộc về em
-Em cũng chẳng thuộc về ai
-Tình yêu này như làn mơ bay xa...`
+    const lyricsData = {
+      "tung-quen": `Từng quen nhau, từng yêu nhau tha thiết
+Rồi cũng quên nhau như chưa bắt đầu
+Anh bước đi mang theo yêu thương ngày ấy
+Bỏ lại em trong nỗi đau ngỡ như đã phai màu
+
+Từng cô đơn, từng rơi nước mắt vì ai
+Từng lặng im chẳng muốn yêu thêm một ai
+Đến khi anh quay về, em chẳng thể nào
+Đón nhận anh như lúc ban đầu
+
+Anh ơi, em đã từng cố quên một người
+Cố quên một người đã từng xem là tất cả
+Giờ anh quay về, em biết phải làm sao?
+Trái tim em giờ đây đâu còn chỗ cho anh nữa
+
+Tình yêu ấy em đã chôn sâu vào ký ức
+Giờ đây em đã khác xưa nhiều rồi
+Em không thể yêu anh như ngày xưa được nữa
+Dẫu biết trái tim vẫn còn yêu... nhưng không thể như lúc xưa...`
     };
 
-    document.getElementById('songSelect').addEventListener('change', function () {
-      const selected = this.value;
-      document.getElementById('lyrics').textContent = lyrics[selected] || 'Không tìm thấy lời bài hát.';
+    const select = document.getElementById("songSelect");
+    const lyrics = document.getElementById("lyrics");
+
+    select.addEventListener("change", () => {
+      lyrics.textContent = lyricsData[select.value] || "";
     });
   </script>
 </body>
