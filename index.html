@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lời Bài Hát</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f3f4f6;
+      color: #111827;
+      padding: 2rem;
+      max-width: 800px;
+      margin: auto;
+    }
+    h1 {
+      text-align: center;
+      color: #1d4ed8;
+    }
+    select {
+      display: block;
+      margin: 1rem auto;
+      padding: 0.5rem;
+      font-size: 1rem;
+    }
+    pre {
+      white-space: pre-wrap;
+      background: #fff;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <h1>Lời Bài Hát</h1>
+  <select id="songSelect">
+    <option value="see-tinh">See Tình</option>
+    <option value="tung-quen">Từng Quen</option>
+    <option value="chuyen-doi-ta">Chuyện Đôi Ta</option>
+    <option value="khong-thuoc-ve-nhau">Chúng Ta Không Thuộc Về Nhau</option>
+  </select>
+  <pre id="lyrics">
+Chọn một bài hát để xem lời ngay nào...
+  </pre>
+  <script>
+    const lyrics = {
+      "see-tinh": `Đâu phải do duyên số đây là do anh cưỡng em thôi
+Tình đẹp thế ai mà hững, anh nhìn em là say lên ngày trôi...`,
+      "tung-quen": `Tôi từng quên, quên một người
+Từng đau đớn đau...
+Nhưng sao giờ đây, em quay về...`,
+      "chuyen-doi-ta": `Đến hôm nay, ta có còn là gì của nhau?
+Hay chỉ là những hồi ức?
+Bên nhau mà chẳng hề thấy...`,
+      "khong-thuoc-ve-nhau": `Anh không thuộc về em
+Em cũng chẳng thuộc về ai
+Tình yêu này như làn mơ bay xa...`
+    };
+
+    document.getElementById('songSelect').addEventListener('change', function () {
+      const selected = this.value;
+      document.getElementById('lyrics').textContent = lyrics[selected] || 'Không tìm thấy lời bài hát.';
+    });
+  </script>
+</body>
+</html>
